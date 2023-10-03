@@ -40,6 +40,10 @@ services:
         target: /app/トレーニング.sh
         read_only: true
       - type: bind
+        source: ./テキストからスピーチへ.sh
+        target: /app/テキストからスピーチへ.sh
+        read_only: true
+      - type: bind
         source: ./configs
         target: /app/configs
     deploy:

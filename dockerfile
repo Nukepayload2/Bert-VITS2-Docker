@@ -19,7 +19,6 @@ RUN apt install ffmpeg -y
 
 # restore packages
 WORKDIR /app
-COPY ./requirements.txt requirements.txt
 
 ## pip use tsinghua source
 RUN python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
@@ -28,7 +27,11 @@ RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ## install packages
 ### install torch first
 RUN pip install https://mirrors.aliyun.com/pytorch-wheels/cu118/torch-2.0.1+cu118-cp38-cp38-linux_x86_64.whl
-RUN pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
+RUN pip install https://mirrors.aliyun.com/pytorch-wheels/cu118/torchaudio-2.0.2+cu118-cp38-cp38-linux_x86_64.whl
+RUN pip install https://mirrors.aliyun.com/pytorch-wheels/cu118/torchvision-0.15.2+cu118-cp38-cp38-linux_x86_64.whl
+### install others
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 # copy code
 COPY . .

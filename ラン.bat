@@ -1,2 +1,2 @@
-docker-compose run vits
+docker-compose run --service-ports vits
 pause

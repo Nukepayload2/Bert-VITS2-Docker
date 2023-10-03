@@ -1,2 +1,2 @@
-docker-compose run vits --no-recreate
+docker-compose run --service-ports vits --no-recreate
 pause
