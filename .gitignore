@@ -166,3 +166,18 @@ cython_debug/
 filelists/*
 !/filelists/esd.list
 data/*
+
+# Visual Studio
+/.vs
+
+# Downloads
+/bert/bert-base-japanese-v3/flax_model.msgpack
+/bert/bert-base-japanese-v3/pytorch_model.bin
+/bert/bert-base-japanese-v3/tf_model.h5
+/bert/bert-base-japanese-v3/tokenizer_config.json
+/bert/chinese-roberta-wwm-ext-large/flax_model.msgpack
+/bert/chinese-roberta-wwm-ext-large/tf_model.h5
+
+# Input files
+/dataset
+/raw

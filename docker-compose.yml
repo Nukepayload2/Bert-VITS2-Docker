@@ -1,0 +1,51 @@
+﻿version: "3.5"
+services:
+  vits:
+    #entrypoint: /bin/bash
+    stdin_open: true 
+    tty: true
+    image: bert-vits2:latest
+    shm_size: '2G'
+    ports: 
+      - "6006:6006"
+      - "7860:7860"
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /app/logs
+      - type: bind
+        source: ./bert
+        target: /app/bert
+        read_only: true
+      - type: bind
+        source: ./dataset
+        target: /app/dataset
+      - type: bind
+        source: ./raw
+        target: /app/raw
+        read_only: true
+      - type: bind
+        source: ./filelists
+        target: /app/filelists
+      - type: bind
+        source: ./メニュー.sh
+        target: /app/メニュー.sh
+        read_only: true
+      - type: bind
+        source: ./プリプロセス.sh
+        target: /app/プリプロセス.sh
+        read_only: true
+      - type: bind
+        source: ./トレーニング.sh
+        target: /app/トレーニング.sh
+        read_only: true
+      - type: bind
+        source: ./configs
+        target: /app/configs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
